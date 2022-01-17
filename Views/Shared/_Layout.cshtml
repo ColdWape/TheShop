@@ -1,0 +1,131 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>The Shop</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <link href="~/css/myStyles.css" rel="stylesheet" />
+    <link href="~/css/main.css" rel="stylesheet" />
+</head>
+
+<body class="homepage is-preload">
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <section id="header">
+
+            <!-- Logo -->
+            <h1>Продукты от Васи</h1>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li><a asp-action="Index" asp-controller="Home">Главная</a></li>
+                    
+
+                    @if (User.IsInRole("user"))
+                    {
+                        <li><a asp-action="ShopBasket" asp-controller="Basket">Корзина</a></li>
+
+                    }
+                    @if (User.IsInRole("admin") || User.IsInRole("seller"))
+                    {
+                        <li><a asp-action="NewPrdct" asp-controller="AddProduct">Добавить товар</a></li>
+
+                    }
+                    @if (User.IsInRole("user") || User.IsInRole("admin") || User.IsInRole("seller"))
+                    {
+                        @*<li><a href="left-sidebar.html">Профиль</a></li>*@
+                        <li>
+                            
+                                <form asp-action="Logout" asp-controller="Auth" asp-anti-forgery="true">
+
+                                    <input style="padding: 0.3em 1.5em 0.3em 1.5em;" type="submit" value="Выйти" />
+                                </form>
+                            
+                        </li>
+                    }
+
+
+                    else
+                    {
+                        <li><a asp-action="Login" asp-controller="Auth">Вход</a></li>
+                        <li><a asp-action="Register" asp-controller="Auth">Регистрация</a></li>
+                    }
+
+
+                </ul>
+            </nav>
+
+            <!-- Banner -->
+            <!--<section id="banner">
+        <header>
+            <h2>Howdy. This is Dopetrope.</h2>
+            <p>A responsive template by HTML5 UP</p>
+        </header>
+    </section>-->
+            <!-- Intro -->
+            <!--<section id="intro" class="container">
+        <div class="row">
+            <div class="col-4 col-12-medium">
+                <section class="first">
+                    <i class="icon solid featured fa-cog"></i>
+                    <header>
+                        <h2>Ipsum consequat</h2>
+                    </header>
+                    <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
+                </section>
+            </div>
+            <div class="col-4 col-12-medium">
+                <section class="middle">
+                    <i class="icon solid featured alt fa-bolt"></i>
+                    <header>
+                        <h2>Magna etiam dolor</h2>
+                    </header>
+                    <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
+                </section>
+            </div>
+            <div class="col-4 col-12-medium">
+                <section class="last">
+                    <i class="icon solid featured alt2 fa-star"></i>
+                    <header>
+                        <h2>Tempus adipiscing</h2>
+                    </header>
+                    <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
+                </section>
+            </div>
+        </div>
+        <footer>
+            <ul class="actions">
+                <li><a href="#" class="button large">Get Started</a></li>
+                <li><a href="#" class="button alt large">Learn More</a></li>
+            </ul>
+        </footer>
+    </section>-->
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </section>
+
+        
+
+
+            
+
+    </div>
+    
+    <!-- Scripts -->
+    
+
+    <script src="~/js/default/breakpoints.min.js"></script>
+    <script src="~/js/default/browser.min.js"></script>
+    <script src="~/js/default/jquery.dropotron.min.js"></script>
+    <script src="~/js/default/jquery.min.js"></script>
+    <script src="~/js/default/main.js"></script>
+    <script src="~/js/default/util.js"></script>
+
+
+
+</body>
+</html>

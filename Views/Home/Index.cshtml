@@ -1,0 +1,46 @@
+﻿<section id="main" style=" margin-top: 25px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <section>
+                    <div class="row">
+                        @foreach (var item in ViewBag.Products)
+                        {
+                            <div class="col-4 col-6-medium col-12-small">
+                                <section class="box">
+
+                                    <a href="#" class="image featured"><img src="@item.Img" alt="" /></a>
+                                    <header>
+                                        <h3>@item.Name</h3>
+                                    </header>
+                                    <p>@item.Info</p>
+                                    <div>
+                                        Цена: @item.Price рублей
+                                        <br />
+                                        Осталось: @item.Quantity штук
+                                    </div>
+                                    @if (User.IsInRole("user"))
+                                    {
+                                        <footer>
+                                            <form asp-action="ShopBasket" asp-controller="Basket" asp-anti-forgery="true">
+                                                
+                                                    <input name="ProductId" id="color-green" value="@item.Id" style="display:none">
+                                                    <input style="padding: 0.3em;" type="submit" value="Добавить в корзину" class="sbmtBtn" />
+                                                
+                                            </form>
+                                        </footer>
+                                    }
+
+                                </section>
+                            </div>
+                        }
+                        </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    

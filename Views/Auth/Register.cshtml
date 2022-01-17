@@ -1,0 +1,51 @@
+﻿@model WebApplication1.Models.RegistrationModel
+
+<section id="intro" class="container">
+
+    <div class="row">
+        <div class="logMenu">
+            <section class="first">
+                <i style="margin-top:-30px;" class="icon solid featured fa-user-plus"></i>
+
+                <form asp-action="Register" asp-controller="Auth" asp-anti-forgery="true">
+                    <div class="validation" asp-validation-summary="ModelOnly"></div>
+                    <br />
+                    <div>
+                        <div >
+                            <input type="text" asp-for="Login" placeholder="Введите логин" />
+                            <span asp-validation-for="Login" class="attention-text" />
+                        </div>
+                        <br />
+                        <div >
+                            <input asp-for="Pass" placeholder="Введите пароль" />
+                            <span asp-validation-for="Pass" class="attention-text" />
+                        </div>
+                        <br />
+
+                        <div>
+                            <input asp-for="OneMoreTimePass" class="inputBlock" placeholder="Повторите пароль" />
+                            <span asp-validation-for="OneMoreTimePass" class="attention-text" />
+                        </div>
+                        <div style="text-align: initial; padding-left: 50px; margin-top: 25px;">
+                            <input class="custom-radio" name="ChooseRole" type="radio" id="color-green" value="user">
+                            <label for="color-green">Я покупатель</label>
+                            <br />
+
+                            <input class="custom-radio" name="ChooseRole" type="radio" id="color-red" value="seller">
+                            <label for="color-red">Я продавец</label>
+                        </div>
+
+
+                        <input type="submit" value="Зарегистрироваться" class="sbmtBtn" />
+
+                    </div>
+                </form>
+            </section>
+        </div>
+
+
+
+    </div>
+
+</section>
+

@@ -1,0 +1,86 @@
+﻿<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 col-12-medium">
+
+                <!-- Content -->
+                <article class="box post">
+                    <header>
+                        <h2>Список товаров</h2>
+                        
+                    </header>
+                   
+                    <table>
+                        <tr>
+                            <td><h3>Название</h3></td>
+                            <td><h3>Количество</h3></td>
+
+                            <td><h3>Стоимость</h3></td>
+                        </tr>
+
+
+                        @foreach (var item in ViewBag.MyBasket)
+                        {
+
+                            <tr>
+
+                                @if (item.Buyer.Login == User.Identity.Name)
+                                {
+                                    <td>
+                                        @item.TheProduct.Name
+                                    </td>
+                                    <td>x1</td>
+
+                                    <td class="ThePrice">@item.TheProduct.Price</td>
+                                }
+
+
+
+                            </tr>
+
+
+                        }
+
+                    </table>
+                    
+                </article>
+
+            </div>
+            <div class="col-4 col-12-medium">
+
+                <!-- Sidebar -->
+                <section class="box">
+
+                    <header>
+                        <h3>Итог</h3>
+                    </header>
+                    
+                    <table>
+                        <tr>
+                            <td>Товаров в корзине на  </td>
+                            <td><div id="itog"></div> </td>
+                        </tr>
+                    </table>
+                        
+
+
+                        <footer>
+                            <a href="#" class="button alt">Оплата</a>
+                        </footer>
+                </section>
+                <script type="text/javascript">
+                    function raschet() {
+                        var a = document.getElementsByClassName("ThePrice");
+                        var b = 0;
+                        for (var i = 0; i < a.length; i++) {
+                            b += parseInt( a[i].innerHTML);
+                        }
+                        document.getElementById("itog").innerHTML = b + " руб";
+                    }
+
+                    window.onload = raschet;
+                </script>
+            </div>
+        </div>
+    </div>
+</section>

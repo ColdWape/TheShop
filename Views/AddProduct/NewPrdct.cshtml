@@ -1,0 +1,49 @@
+﻿@model WebApplication1.Models.ProductModel
+
+<section id="intro" class="container">
+
+    <div class="row">
+        <div class="logMenu">
+            <section class="first">
+                <i style="margin-top:-30px;" class="icon solid featured fa-plus-circle"></i>
+
+                <form asp-action="NewPrdct" asp-controller="AddProduct" asp-anti-forgery="true">
+                    <div class="validation" asp-validation-summary="ModelOnly"></div>
+                    <br />
+                    <div>
+                        <div>
+                            <input type="text" asp-for="Name" placeholder="Наименование товара" />
+                            <span asp-validation-for="Name" class="attention-text" />
+                        </div>
+                        <br />
+
+                        <div>
+                            <input type="text" asp-for="Info" placeholder="Описание" />
+                            <span asp-validation-for="Info" class="attention-text" />
+                        </div>
+                        <br />
+
+                        <div>
+                            <input type="text" asp-for="Price" placeholder="Цена" />
+                            <span asp-validation-for="Price" class="attention-text" />
+                        </div>
+                        <br />
+
+                        <div>
+                            <input type="text" asp-for="Quantity" placeholder="Количество" />
+                            <span asp-validation-for="Quantity" class="attention-text" />
+                        </div>
+                        <br />
+
+                        <input type="submit" value="Добавить товар" class="sbmtBtn" />
+
+                    </div>
+                </form>
+            </section>
+        </div>
+
+
+
+    </div>
+
+</section>
